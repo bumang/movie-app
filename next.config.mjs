@@ -12,7 +12,7 @@ const nextConfig = {
   basePath: process.env.NEXT_PUBLIC_PATH_PREFIX || '',
   images: {
     loader: 'custom',
-    path: 'https://example.com/myaccount/',
+    path: '',
     remotePatterns: [
       {
         protocol: 'https',
