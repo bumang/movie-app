@@ -1,8 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 
-import CustomImageLoader from '@/components/ui/ImageLoader';
-
 interface LoginLayoutProps {
   children: React.ReactNode;
 }
@@ -12,7 +10,7 @@ const LoginHeader = () => (
     <div className="flex h-[60px]  content-between items-center">
       <div className="h-full cursor-pointer">
         <Image
-          loader={CustomImageLoader}
+          // loader={CustomImageLoader}
           alt="logo"
           src={`${process.env.NEXT_PUBLIC_PATH_PREFIX || ''}/logo.svg`}
           height={50}
