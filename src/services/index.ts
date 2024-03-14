@@ -17,7 +17,6 @@ export const axiosClient = axios.create({
   paramsSerializer: {
     serialize: (params) => qs.stringify(params, { encode: false, arrayFormat: 'repeat' }),
   },
-  withCredentials: true,
 });
 
 axiosClient.interceptors.request.use(

@@ -5,7 +5,7 @@ import Person from '@/components/ui/Icons/16/icons/person.svg';
 import { cn } from '@/utils/cn';
 
 const avatar = cva(
-  'flex-shrink-0 inline-flex justify-center items-center object-cover rounded-full  bg-white text-h4-bold text-primary-blue',
+  'flex-shrink-0 inline-flex justify-center items-center object-cover rounded-full  bg-transparent text-h4-bold text-primary-blue',
   {
     variants: {
       size: {
@@ -58,7 +58,7 @@ export const Avatar = ({ size, alt, shape, src, name, className, ...props }: Ava
     : `${firstWord?.charAt(0)}`;
 
   return (
-    <div data-testId={name} className="relative h-fit w-fit">
+    <div data-testid={name} className="relative h-fit w-fit">
       <RadixAvatar.Root
         {...props}
         className={cn(
