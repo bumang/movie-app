@@ -12,7 +12,7 @@ const nextConfig = {
   basePath: '/movie-app',
   images: {
     loader: 'custom',
-    path: 'https://example.com/myaccount/',
+    path: '',
     remotePatterns: [
       {
         protocol: 'https',
