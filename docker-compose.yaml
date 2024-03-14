@@ -1,0 +1,16 @@
+version: '3.5'
+services:
+  server:
+    container_name: movie-app-ui
+    restart: unless-stopped
+    env_file: .env
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    networks:
+      - movie-app
+    ports:
+      - '3000:3000'
+
+networks:
+  movie-app:

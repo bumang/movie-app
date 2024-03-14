@@ -22,7 +22,7 @@ const config: Config = {
       transparent: 'transparent',
       primary: {
         darkBlue: '#212839',
-        black: '#262A34',
+        black: '#000000',
         blue: '#037096',
         darkGray: '#5C5E62',
         gray: '#A1A3A7',
@@ -42,6 +42,7 @@ const config: Config = {
       text: {
         default: '#E8E7CB',
         preLoader: '#637174',
+        black: '#262A34',
       },
 
       whiteAlpha: {
@@ -296,9 +297,8 @@ const config: Config = {
         shadow6: '0px 2px 27px -5px rgba(35, 38, 40, 0.32)',
         shadow7: '0px 3px 15px -1px rgba(35, 38, 40, 0.07)',
         shadow8: '0px -2px 15px 0px rgba(35, 38, 40, 0.17)',
-        'shadow-star':
-          '0 0 0 4px rgba(255,255,255,0.1),0 0 0 8px rgba(255,255,255,0.1),0 0 20px rgba(255,255,255,0.1)',
       },
+
       backgroundSize: ({ theme }) => ({
         auto: 'auto',
         cover: 'cover',
@@ -309,8 +309,7 @@ const config: Config = {
         ...theme('colors'),
       }),
       backgroundImage: {
-        'landing-background': "url('/stars-bg.png')",
-        moon: "url('/moon.png')",
+        'gradient-custom': 'linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111)',
       },
       borderRadius: {
         none: '0',

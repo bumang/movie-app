@@ -9,9 +9,9 @@ import { cn } from '@/utils/cn';
 const searchFIeldVariants = cva(['h-12'], {
   variants: {
     variant: {
-      gray: 'border appearance-none h-12 border-primary-dark-gray py-3 px-4 bg-white w-[352px] text-sm leading-5 placeholder-gray-400 text-gray-500   rounded-full p-4 block pl-9 pr-9 hover:border-primary-blue focus:border-white focus:outline-none focus:shadow-none focus:border-primary-blue focus:ring-offset-0',
+      gray: 'border appearance-none h-12 border-primary-gray py-3 px-4 bg-transparent w-[352px] text-sm leading-5 placeholder-gray-400 text-gray-500   rounded-full p-4 block pl-9 pr-9 hover:border-primary-darkGray focus:border-primary-darkGray focus:outline-none focus:shadow-none focus:border-primary-darkGray focus:ring-offset-0',
       light:
-        'border appearance-none h-12 border-primary-light-gray py-3 px-4 bg-white w-[264px] text-sm leading-5 placeholder-gray-400 text-gray-500   rounded-full p-4 block pl-11 pr-9 hover:border-primary-dark-gray focus:outline-none focus:shadow-none focus:border-primary-dark-gray focus:ring-offset-0 ',
+        'border appearance-none h-12 border-primary-light-gray py-3 px-4 bg-white w-[264px] text-sm leading-5 placeholder-gray-400 text-gray-500   rounded-full p-4 block pl-11 pr-9 hover:border-primary-darkGray focus:outline-none focus:shadow-none focus:border-primary-darkGray focus:ring-offset-0 ',
     },
   },
 });
@@ -36,13 +36,13 @@ export const SearchBar = ({ name, className, variant = 'gray', ...props }: ISear
     >
       {variant === 'gray' ? (
         <div className=" absolute  left-4 top-[40%] h-5">
-          <SearchIcon className="pointer-events-none " />
+          <SearchIcon className="pointer-events-none" />
         </div>
       ) : (
         <div className=" absolute  left-4 top-[28%] h-5">
           <Search24
             className={cn('stroke-primary-light-gray pointer-events-none ', {
-              'stroke-primary-dark-gray': hover,
+              'stroke-primary-darkGray': hover,
             })}
           />
         </div>
@@ -66,12 +66,12 @@ export const SearchBar = ({ name, className, variant = 'gray', ...props }: ISear
           setValue(e.target.value);
         }}
         className={cn(searchFIeldVariants({ className, variant }), {
-          'border-primary-blue': hover && variant === 'light',
+          'border-dark-gray': hover && variant === 'light',
         })}
       />
       {value && (
         <Close
-          className="absolute right-4 top-[33%] cursor-pointer  hover:bg-gray-100"
+          className="absolute right-4 top-[33%] cursor-pointer   hover:bg-transparent"
           onClick={() => setValue('')}
         />
       )}
