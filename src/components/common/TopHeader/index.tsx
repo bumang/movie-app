@@ -57,7 +57,7 @@ export const TopHeader = () => {
           <div className="m-auto  hover:cursor-pointer">
             <Image
               alt="logo"
-              src={`${process.env.NEXT_PUBLIC_PATH_PREFIX || ''}/movie-app/logo.svg`}
+              src={`${process.env.NEXT_PUBLIC_PATH_PREFIX || ''}/logo.svg`}
               height={30}
               width={30}
             />
