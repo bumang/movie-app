@@ -323,10 +323,20 @@ const config: Config = {
         circle: '50%',
         DEFAULT: '2px',
       },
-      animation: {},
+      animation: {
+        'image-slider': 'slide 5s linear infinite',
+      },
       keyframes: {
         textUnderline: {
           '100%': { opacity: '1', transform: 'translate3d(-100%, 0, 0)' },
+        },
+        slide: {
+          '0%': {
+            transform: 'translateX(100%)',
+          },
+          '100% ': {
+            transform: 'translateX(-100%)',
+          },
         },
       },
     },
