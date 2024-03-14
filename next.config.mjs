@@ -1,5 +1,7 @@
 import path from 'path';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
@@ -8,8 +10,8 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  output: 'export',
-  // basePath: process.env.NEXT_PUBLIC_PATH_PREFIX || '',
+  output: isProd ? 'export' : 'standalone',
+  basePath: isProd ? '/movie-app' : '',
   images: {
     unoptimized: true,
     remotePatterns: [

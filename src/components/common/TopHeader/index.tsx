@@ -49,7 +49,6 @@ export const TopHeader = () => {
     { listItems: 'Earnings', key: 3, position: 'list' },
     { listItems: 'Sign out', key: 4, position: 'footer' },
   ];
-
   return (
     <div className="flex min-h-full w-full items-center justify-between bg-transparent px-s40 sm:px-s16">
       <Link href="/">
