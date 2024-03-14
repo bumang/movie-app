@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Avatar, DropDown, MenuList, SearchBar } from '@/components/ui';
+import CustomImageLoader from '@/components/ui/ImageLoader';
 
 // import { useLogoutMutation } from './api';
 
@@ -56,6 +57,7 @@ export const TopHeader = () => {
         <div className="flex gap-s8 p-s12 sm:p-s4">
           <div className="m-auto  hover:cursor-pointer">
             <Image
+              loader={CustomImageLoader}
               alt="logo"
               src={`${process.env.NEXT_PUBLIC_PATH_PREFIX || ''}/logo.svg`}
               height={30}
