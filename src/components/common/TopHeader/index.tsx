@@ -56,9 +56,8 @@ export const TopHeader = () => {
         <div className="flex gap-s8 p-s12 sm:p-s4">
           <div className="m-auto  hover:cursor-pointer">
             <Image
-              // loader={CustomImageLoader}
               alt="logo"
-              src="/logo.svg"
+              src={`${process.env.NEXT_PUBLIC_PATH_PREFIX || ''}/movie-app/logo.svg`}
               height={30}
               width={30}
             />
