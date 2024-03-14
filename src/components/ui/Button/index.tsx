@@ -14,7 +14,7 @@ const buttonVariants = cva(['inline-flex justify-center items-center rounded-[10
       primary:
         'bg-primary-blue hover:bg-secondary-blue-hover text-white active:bg-primary-dark-blue disabled:bg-secondary-light-gray min-w-[145px]',
       'outline-white':
-        'px-[32px] min-w-[113px] border-2 border-solid border-white hover:bg-white hover:bg-opacity-20 text-white active:bg-white active:border-2 active:border-solid active:border-primary-dark-blue active:text-primary-dark-blue',
+        'px-[32px]  min-w-[113px] border-2 border-solid border-white hover:bg-white hover:bg-opacity-20 text-white active:bg-white active:border-2 active:border-solid active:border-primary-dark-blue active:text-primary-dark-blue',
       'outline-black':
         'px-[32px] min-w-[113px] border-2 border-solid border-primary-dark-blue text-primary-dark-blue hover:bg-secondary-light-gray hover:bg-opacity-30 active:bg-gradients-grey disabled:bg-white disabled:border-secondary-light-gray disabled:text-secondary-light-gray',
       'outline-grey':
