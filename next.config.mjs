@@ -10,9 +10,9 @@ const nextConfig = {
   },
   output: 'export',
   basePath: '/movie-app',
+
   images: {
-    loader: 'custom',
-    path: '',
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
