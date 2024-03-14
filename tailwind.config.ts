@@ -323,10 +323,21 @@ const config: Config = {
         circle: '50%',
         DEFAULT: '2px',
       },
-      animation: {},
+      animation: {
+        slideIn: 'slideIn 0.5s ease-in-out forwards',
+        fadeInFromBelow: 'fadeInFromBelow 0.5s ease-in-out forwards',
+      },
       keyframes: {
         textUnderline: {
           '100%': { opacity: '1', transform: 'translate3d(-100%, 0, 0)' },
+        },
+        slideIn: {
+          '0%': { opacity: '0', transform: 'translateX(100%)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        fadeInFromBelow: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },

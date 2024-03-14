@@ -1,8 +1,10 @@
 import Image from 'next/image';
 
+import { ResultsDataType } from '../../types/movies';
+
 interface RowProps {
   title: string;
-  data: any;
+  data: ResultsDataType[] | undefined;
 }
 
 const Row = ({ title, data }: RowProps) => {
@@ -11,7 +13,7 @@ const Row = ({ title, data }: RowProps) => {
       <div className="text-[40px]">{title}</div>
       <div className="no-scrollbar  flex gap-s18 overflow-y-hidden">
         {data &&
-          data?.results?.map((d: any) => (
+          data?.map((d: ResultsDataType) => (
             <div
               className="min-w-[150px] cursor-pointer  text-center font-inter  transition-transform hover:scale-110"
               key={d?.id}

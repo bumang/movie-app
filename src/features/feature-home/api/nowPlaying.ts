@@ -5,8 +5,8 @@ import { axiosClient } from '@/services';
 
 import { MoviesResponse } from '../types/movies';
 
-const upcomingMovies = async (): Promise<MoviesResponse> => {
-  const response = await axiosClient.get<MoviesResponse>(API_ENDPOINTS.UPCOMING, {
+const nowPlayingMovies = async (): Promise<MoviesResponse> => {
+  const response = await axiosClient.get<MoviesResponse>(API_ENDPOINTS.NOW_PLAYING, {
     params: {
       api_key: process.env.NEXT_PUBLIC_API_KEY,
       language: 'en-US',
@@ -16,8 +16,8 @@ const upcomingMovies = async (): Promise<MoviesResponse> => {
   return response.data;
 };
 
-export const useUpcomingMoviesQuery = (): UseQueryResult<MoviesResponse, Error> =>
+export const useNowPlayingMovies = (): UseQueryResult<MoviesResponse, Error> =>
   useQuery({
-    queryFn: upcomingMovies,
-    queryKey: [QUERY_KEYS.UPCOMING],
+    queryFn: nowPlayingMovies,
+    queryKey: [QUERY_KEYS.NOW_PLAYING],
   });

@@ -49,14 +49,12 @@ export const TopHeader = () => {
     { listItems: 'Earnings', key: 3, position: 'list' },
     { listItems: 'Sign out', key: 4, position: 'footer' },
   ];
-
   return (
     <div className="flex min-h-full w-full items-center justify-between bg-transparent px-s40 sm:px-s16">
       <Link href="/">
         <div className="flex gap-s8 p-s12 sm:p-s4">
           <div className="m-auto  hover:cursor-pointer">
             <Image
-              // loader={CustomImageLoader}
               alt="logo"
               src={`${process.env.NEXT_PUBLIC_PATH_PREFIX || ''}/logo.svg`}
               height={30}
