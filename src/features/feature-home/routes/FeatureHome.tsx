@@ -11,17 +11,11 @@ export const FeatureHome = () => {
   return (
     <div className="flex min-h-full min-w-full flex-col  font-trial text-background-default">
       {/* Banner section */}
-      <Banner
-        data={
-          nowPlayingMoviesData?.results[
-            Math.floor(Math.random() * nowPlayingMoviesData.results.length - 1)
-          ]
-        }
-      />
+      <Banner data={nowPlayingMoviesData?.results} />
       {/* Movie Card  Section */}
       <div className="flex flex-col gap-s32 px-s16 py-[40px]">
-        <Row title="Top Rated Movies" data={topRatedMoviesData} />
-        <Row title="Upcoming Movies" data={upcomingMoviesData} />
+        <Row title="Top Rated Movies" data={topRatedMoviesData?.results} />
+        <Row title="Upcoming Movies" data={upcomingMoviesData?.results} />
       </div>
     </div>
   );
