@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import CustomImageLoader from '@/components/ui/ImageLoader';
+
 interface RowProps {
   title: string;
   data: any;
@@ -17,6 +19,7 @@ const Row = ({ title, data }: RowProps) => {
               key={d?.id}
             >
               <Image
+                loader={CustomImageLoader}
                 alt="movie-poster"
                 className="min-h-full min-w-full object-contain"
                 src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${d?.poster_path}`}
