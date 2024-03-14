@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { DropDownButton } from './DropDownButton';
 import { DropDownItem } from './DropDownItem';
 import { DropDownList } from './DropDownList';
-import CustomImageLoader from '../ImageLoader';
 
 interface ListItemObject {
   email: string;
@@ -56,7 +55,7 @@ export const DropDown = ({ children, list, isLoading }: DropDownProps) => {
       <DropDownButton onClick={toggleDropdown}>
         {children || (
           <Image
-            loader={CustomImageLoader}
+            // loader={CustomImageLoader}
             width={20}
             height={20}
             className="h-8 w-8 rounded-full"
