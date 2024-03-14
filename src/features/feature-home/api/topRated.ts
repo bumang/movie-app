@@ -3,10 +3,10 @@ import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { API_ENDPOINTS, QUERY_KEYS } from '@/constants';
 import { axiosClient } from '@/services';
 
-import { TopRatedMovieResponse } from '../types/topRated';
+import { MoviesResponse } from '../types/movies';
 
-const topRatedMovies = async (): Promise<TopRatedMovieResponse> => {
-  const response = await axiosClient.get<TopRatedMovieResponse>(API_ENDPOINTS.TOP_RATED, {
+const topRatedMovies = async (): Promise<MoviesResponse> => {
+  const response = await axiosClient.get<MoviesResponse>(API_ENDPOINTS.TOP_RATED, {
     params: {
       api_key: process.env.NEXT_PUBLIC_API_KEY,
       language: 'en-US',
@@ -16,7 +16,7 @@ const topRatedMovies = async (): Promise<TopRatedMovieResponse> => {
   return response.data;
 };
 
-export const useTopRatedMoviesQuery = (): UseQueryResult<TopRatedMovieResponse, Error> =>
+export const useTopRatedMoviesQuery = (): UseQueryResult<MoviesResponse, Error> =>
   useQuery({
     queryFn: topRatedMovies,
     queryKey: [QUERY_KEYS.TOP_RATED],
