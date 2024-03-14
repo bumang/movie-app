@@ -58,7 +58,7 @@ export const Avatar = ({ size, alt, shape, src, name, className, ...props }: Ava
     : `${firstWord?.charAt(0)}`;
 
   return (
-    <div data-testId={name} className="relative h-fit w-fit">
+    <div data-testid={name} className="relative h-fit w-fit">
       <RadixAvatar.Root
         {...props}
         className={cn(
