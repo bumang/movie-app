@@ -18,7 +18,10 @@ jobs:
  build:
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_BASE_PATH: /movie-app
+      NEXT_PUBLIC_API_URL: https://api.themoviedb.org
+      NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
+      NEXT_PUBLIC_IMAGE_BASE_URL: https://image.tmdb.org/t/p/original
+      NEXT_PUBLIC_PATH_PREFIX: /movie-app
     steps:
       - name: Checkout
         uses: actions/checkout@v4
