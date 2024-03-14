@@ -324,19 +324,20 @@ const config: Config = {
         DEFAULT: '2px',
       },
       animation: {
-        'image-slider': 'slide 5s linear infinite',
+        slideIn: 'slideIn 0.5s ease-in-out forwards',
+        fadeInFromBelow: 'fadeInFromBelow 0.5s ease-in-out forwards',
       },
       keyframes: {
         textUnderline: {
           '100%': { opacity: '1', transform: 'translate3d(-100%, 0, 0)' },
         },
-        slide: {
-          '0%': {
-            transform: 'translateX(100%)',
-          },
-          '100% ': {
-            transform: 'translateX(-100%)',
-          },
+        slideIn: {
+          '0%': { opacity: '0', transform: 'translateX(100%)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        fadeInFromBelow: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },
