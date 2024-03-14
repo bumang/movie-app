@@ -58,7 +58,7 @@ export const TopHeader = () => {
             <Image
               // loader={CustomImageLoader}
               alt="logo"
-              src={`${process.env.NEXT_PUBLIC_PATH_PREFIX || ''}/logo.svg`}
+              src="/logo.svg"
               height={30}
               width={30}
             />
