@@ -13,7 +13,7 @@ export const FeatureHome = () => {
       {/* Banner section */}
       <Banner data={nowPlayingMoviesData?.results} />
       {/* Movie Card  Section */}
-      <div className="flex flex-col gap-s32 px-s16 py-[40px]">
+      <div className=" flex flex-col gap-s32 px-s16 py-[40px]">
         <Row title="Top Rated Movies" data={topRatedMoviesData?.results} />
         <Row title="Upcoming Movies" data={upcomingMoviesData?.results} />
       </div>
