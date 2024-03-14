@@ -8,13 +8,16 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  output: 'export',
+  basePath: '/movie-app',
   images: {
+    loader: 'custom',
+    path: 'https://example.com/myaccount/',
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'image.tmdb.org',
         port: '',
-        // pathname: '/staging/pv/nm/Raralabs/*',
       },
     ],
   },
