@@ -16,20 +16,30 @@ const Banner = ({ data }: BannerProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
       data && setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
-    }, 5000); // Change image every 2 seconds
+    }, 5000); // Change image every 5 seconds
 
     return () => clearInterval(interval);
   }, [data]);
 
   return (
     <div className="relative m-auto flex h-[100vh] w-[100%] justify-center bg-primary-darkGray">
-      <Image
-        alt="movie-banner"
-        src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${data && data[currentIndex]?.backdrop_path}`}
-        fill
-        className="transition-opacity duration-500 ease-in-out"
-      />
-      <div className="absolute bottom-[10%] left-0 z-20 px-16">
+      <div className="image-slider absolute h-full w-full overflow-hidden">
+        {data &&
+          data?.map((item, index) => (
+            <div
+              key={item?.id}
+              className={`absolute h-full w-full transition-opacity duration-500 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+            >
+              <Image
+                alt="movie-banner"
+                src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.backdrop_path}`}
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          ))}
+      </div>
+      <div className="absolute bottom-[10%] left-0 z-20 px-16 transition-opacity duration-500 ease-in-out">
         <div className="[text-shadow:0px 1px 24px -1px rgba(255, 255, 255, 0.25)] text-[88px]">
           {(data && data[currentIndex]?.title) ||
             (data && data[currentIndex]?.name) ||
