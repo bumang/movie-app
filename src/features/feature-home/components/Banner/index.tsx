@@ -12,7 +12,6 @@ const Banner = ({ data }: BannerProps) => {
   return (
     <div className="relative m-auto flex h-[100vh] w-[100%] justify-center bg-primary-darkGray">
       <Image
-        // loader={CustomImageLoader}
         alt="movie-banner"
         src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${data?.backdrop_path}`}
         fill

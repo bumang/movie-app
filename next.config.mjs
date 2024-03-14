@@ -11,8 +11,7 @@ const nextConfig = {
   output: 'export',
   basePath: process.env.NEXT_PUBLIC_PATH_PREFIX || '',
   images: {
-    loader: 'custom',
-    path: '',
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
