@@ -33,7 +33,7 @@ const Banner = ({ data }: BannerProps) => {
           </div>
         </div>
         <div className="w-[50%] pt-[30px] font-inter text-[20px]">
-          {data && truncateWords(data?.overview, 42)}
+          {data && truncateWords(data?.overview, 100)}
         </div>
       </div>
       <div className="absolute bottom-0 left-0 z-10 h-[50%] w-full bg-gradient-custom " />
