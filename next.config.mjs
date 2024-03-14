@@ -9,7 +9,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   output: 'export',
-  basePath: '/movie-app' || '',
+  basePath: process.env.NEXT_PUBLIC_PATH_PREFIX || '',
   images: {
     unoptimized: true,
     remotePatterns: [
