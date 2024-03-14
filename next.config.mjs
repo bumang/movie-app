@@ -8,7 +8,16 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: {},
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+        port: '',
+        // pathname: '/staging/pv/nm/Raralabs/*',
+      },
+    ],
+  },
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({

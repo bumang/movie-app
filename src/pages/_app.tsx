@@ -34,13 +34,15 @@ export const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout || ((page) => page);
   return (
     <QueryClientProvider client={queryClient}>
-      {getLayout(
-        <main className={`${drukTrail.variable} h-full w-full`}>
-          <Component {...pageProps} />
-          <Toaster position="top-center" />
-          <ReactQueryDevtools />
-        </main>
-      )}
+      <main className={`${drukTrail.variable} no-scrollbar h-full w-full`}>
+        {getLayout(
+          <>
+            <Component {...pageProps} />
+            <Toaster position="top-center" />
+            <ReactQueryDevtools />
+          </>
+        )}
+      </main>
     </QueryClientProvider>
   );
 };

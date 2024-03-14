@@ -1,5 +1,4 @@
 export const QUERY_KEYS = {
-  LOGIN: 'login',
-  SIGNUP: 'signup',
-  LOGOUT: 'logout',
+  TOP_RATED: 'top-rated-mov',
+  UPCOMING: 'upcoming-mov',
 };

@@ -1,5 +1,4 @@
 export const API_ENDPOINTS = {
-  LOGIN: '/login',
-  SIGNUP: '/signup',
-  LOGOUT: '/logout',
+  TOP_RATED: '/3/movie/top_rated',
+  UPCOMING: '/3/movie/upcoming',
 };
