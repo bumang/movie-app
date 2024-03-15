@@ -1,6 +1,7 @@
 import { components, GroupBase, SelectComponentsConfig } from 'react-select';
 
 import Sort from '@/components/ui/Icons/24/icons/sort.svg';
+import { cn } from '@/utils/cn';
 
 export interface Option {
   label: string | number;
@@ -38,7 +39,11 @@ export const getComponents: (
     const { options } = props;
     return (
       <components.DropdownIndicator {...props}>
-        {options.length <= 5 ? <Sort /> : <Sort />}
+        {options.length <= 5 ? (
+          <Sort className={cn('stroke-primary-light-gray cursor-pointer ', {})} />
+        ) : (
+          <Sort className={cn('stroke-primary-light-gray  cursor-pointer ', {})} />
+        )}
       </components.DropdownIndicator>
     );
   },

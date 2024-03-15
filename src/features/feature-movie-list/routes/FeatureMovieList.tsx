@@ -28,7 +28,7 @@ export const FeatureMovieList = () => {
   const sortFilterOptions: SelectOption[] = [
     { label: 'Release Date', value: 'primary_release_date.asc' },
     { label: 'Rating', value: 'vote_average.asc' },
-    { label: 'Time Duration', value: '' },
+    // { label: 'Time Duration', value: 'time_duration.asc' },
   ];
 
   return (
