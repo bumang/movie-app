@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import { Loader } from '@/components';
+import { Loader, Select } from '@/components';
+import { SelectOption } from '@/components/ui/Select/select.types';
 import { ResultsDataType } from '@/features/feature-home/types/movies';
 import { cn } from '@/utils/cn';
 
@@ -14,24 +15,58 @@ export const FeatureMovieList = () => {
     data,
     isLoading: allMoviesIsLoading,
     isFetching: allMoviesIsFetching,
-  } = useAllMoviesQuery({ with_genres: (router.query.with_genres as string) ?? '' });
+  } = useAllMoviesQuery({
+    with_genres: router.query.with_genres as string,
+    sort_by: router?.query?.sort_by as string,
+  });
   const [isLoading, setLoading] = useState(true);
 
   if (allMoviesIsLoading || allMoviesIsFetching) {
     return <Loader size="lg" />;
   }
 
+  const sortFilterOptions: SelectOption[] = [
+    { label: 'Release Date', value: 'primary_release_date.asc' },
+    { label: 'Rating', value: 'vote_average.asc' },
+    { label: 'Time Duration', value: '' },
+  ];
+
   return (
     <div className="flex h-[100%] min-h-full w-[80%] min-w-full flex-col  pt-[80px]  font-inter text-background-default">
       <div className="m-auto  flex h-full w-[90%] flex-col gap-8 ">
-        <h1 className="border-b-3 border-b-gray-800  font-trial text-7xl font-bold text-orange-300">
-          Movie List
-        </h1>
-        <div className="no-scrollbar  flex flex-wrap justify-start gap-[64px] ">
+        <div className="flex min-w-full justify-between border-b-3 border-b-gray-800">
+          <h1 className="font-trial text-7xl font-bold text-orange-300">Movie List</h1>
+          <div className="flex gap-4">
+            <div className="flex-1 pt-7">Sort by:</div>
+            <div>
+              <Select
+                testId=""
+                isClearable
+                options={sortFilterOptions}
+                onChange={(newValue) => {
+                  if (newValue === null) {
+                    router.push({
+                      query: {},
+                    });
+                  }
+                  if (newValue && 'value' in newValue) {
+                    router.push({
+                      query: {
+                        sort_by: newValue?.value,
+                      },
+                    });
+                  }
+                }}
+                className="pt-5"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="no-scrollbar  flex flex-wrap  items-start justify-evenly gap-[64px] ">
           {data &&
             data?.results?.map((d: ResultsDataType) => (
               <div
-                className="min-w-[300px] cursor-pointer pl-[2%] pt-[10px]  text-center font-inter  transition-transform hover:scale-110"
+                className="w-[300px] cursor-pointer p-[2%] text-center font-inter transition-transform hover:scale-110"
                 key={d?.id}
               >
                 <Image

@@ -48,7 +48,6 @@ export const TopHeader = ({ page }: TopHeaderProps) => {
             className="pt-[5px]"
             placeholder="Genre"
             testId=""
-            // value={value}
             options={
               data &&
               data?.genres?.map((d) => ({

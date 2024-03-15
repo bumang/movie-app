@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 
+import Button from '@/components/ui/Button';
 import { truncateWords } from '@/utils/truncateStr';
 
 import { ResultsDataType } from '../../types/movies';
@@ -94,7 +95,7 @@ const Banner = ({ data }: BannerProps) => {
             (data && data[currentIndex]?.name) ||
             (data && data[currentIndex]?.original_name)}
         </div>
-        {/* <div className="flex w-[20%] gap-s8">
+        <div className="flex w-[20%] gap-s8">
           <div>
             <Button size={40} className="font-inter text-black" variant="filled-white">
               Play
@@ -105,7 +106,7 @@ const Banner = ({ data }: BannerProps) => {
               My List
             </Button>
           </div>
-        </div> */}
+        </div>
         <div className="w-[50%] pt-[30px] font-inter text-[20px]">
           {data && truncateWords(data && data[currentIndex]?.overview, 100)}
         </div>

@@ -38,7 +38,7 @@ export const getComponents: (
     const { options } = props;
     return (
       <components.DropdownIndicator {...props}>
-        {options.length <= 5 ? <div>down</div> : <Sort />}
+        {options.length <= 5 ? <Sort /> : <Sort />}
       </components.DropdownIndicator>
     );
   },
