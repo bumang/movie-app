@@ -17,7 +17,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-// const fiveMinutesInMs = 5 * 60 * 1000;
+const fiveMinutesInMs = 5 * 60 * 1000;
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -25,7 +25,7 @@ const queryClient = new QueryClient({
       refetchOnMount: true,
       refetchOnReconnect: true,
       retry: false,
-      // staleTime: fiveMinutesInMs,
+      staleTime: fiveMinutesInMs,
     },
   },
 });

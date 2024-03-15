@@ -29,6 +29,6 @@ export const useMovieDetailQuery = (
 ): UseQueryResult<MovieDetailType, Error> =>
   useQuery({
     queryFn: () => movieDetail(params),
-    queryKey: [QUERY_KEYS.MOVIE_DETAIL],
+    queryKey: [QUERY_KEYS.MOVIE_DETAIL, params?.id],
     enabled: !!params.id,
   });
