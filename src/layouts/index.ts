@@ -1,1 +1,2 @@
-export * from './authentication/LoginLayout';
+export * from './detail';
+export * from './landing';
