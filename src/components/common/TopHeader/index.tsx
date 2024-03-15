@@ -1,52 +1,27 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-import { Avatar, DropDown, MenuList, SearchBar } from '@/components/ui';
+import { Avatar, DropDown, MenuList, SearchBar, Select } from '@/components/ui';
 
-// import { useLogoutMutation } from './api';
+import { useGenreListQuery } from './api';
 
-export const TopHeader = () => {
-  // const router = useRouter();
-  // const logout = useLogoutMutation();
+interface TopHeaderProps {
+  page: 'home' | 'detail' | 'list';
+}
 
-  // const logoutClick = () => {
-  //   asyncToast({
-  //     id: 'logout',
-  //     promise: logout.mutateAsync({}),
-  //     msgs: {
-  //       loading: 'Loggin out...',
-  //       success: 'Logged out Successfully!',
-  //     },
-  //     // onError: (error) => {
-  //     //   const errors = (error as any) ?? {};
-  //     //   console.log('errors', errors);
-  //     // Object.keys(errors).forEach((err) => {
-  //     //   logout.setError(
-  //     //     err,
-  //     //     {
-  //     //       message: errors[err],
-  //     //     },
-  //     //     {
-  //     //       shouldFocus: true,
-  //     //     }
-  //     //   );
-  //     // });
-  //     // },
-  //     onSuccess: () => {
-  //       router.push('/auth/login');
-  //     },
-  //   });
-  // };
+export const TopHeader = ({ page }: TopHeaderProps) => {
+  const { data } = useGenreListQuery();
+  const router = useRouter();
 
   const menuList: MenuList[] = [
     { listItems: { email: 'name@flowbite.com', name: 'Bonnie Green' }, key: 1, position: 'header' },
     {
-      listItems: 'Dashboard',
+      listItems: 'All Movies',
       key: 2,
       position: 'list',
+      onMenuClick: () => router.push('/movies'),
     },
-    { listItems: 'Settings', key: 2, position: 'list' },
-    { listItems: 'Earnings', key: 3, position: 'list' },
     { listItems: 'Sign out', key: 4, position: 'footer' },
   ];
   return (
@@ -66,8 +41,38 @@ export const TopHeader = () => {
           </div>
         </div>
       </Link>
-      <div className=" hidden md:flex md:gap-s8">
-        <SearchBar name="search-bar" variant="gray" />
+      <div className="hidden md:flex md:gap-s16">
+        {page === 'list' && (
+          <Select
+            isClearable
+            className="pt-[5px]"
+            placeholder="Genre"
+            testId=""
+            // value={value}
+            options={
+              data &&
+              data?.genres?.map((d) => ({
+                label: d?.name,
+                value: d?.id,
+              }))
+            }
+            onChange={(newValue) => {
+              if (newValue === null) {
+                router.push({
+                  query: {},
+                });
+              }
+              if (newValue && 'value' in newValue) {
+                router.push({
+                  query: {
+                    with_genres: newValue?.value,
+                  },
+                });
+              }
+            }}
+          />
+        )}
+        {page === 'detail' && <SearchBar name="search-bar" variant="gray" />}
         <DropDown list={menuList}>
           <Avatar size="lg" className="cursor-pointer" />
         </DropDown>

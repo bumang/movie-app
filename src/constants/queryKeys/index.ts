@@ -4,4 +4,6 @@ export const QUERY_KEYS = {
   NOW_PLAYING: 'now-playing-mov',
   MOVIE_DETAIL: 'movie-detail',
   CAST_DETAIL: 'movie-cast-detail',
+  GENRE_LIST: 'movie-genre-list',
+  All_MOVIES: 'all-movies',
 };
