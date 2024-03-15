@@ -1,22 +1,23 @@
-// import { useMutation, UseMutationResult } from '@tanstack/react-query';
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
-// import { API_ENDPOINTS, QUERY_KEYS } from '@/constants';
-// import { axiosClient } from '@/services';
+import { API_ENDPOINTS, QUERY_KEYS } from '@/constants';
+import { axiosClient } from '@/services';
 
-// import { Logout, PostLogoutResponse } from './types';
+import { GenreListsResponse } from './types';
 
-// const logout = async (data: Partial<Logout>): Promise<PostLogoutResponse> => {
-//   const response = await axiosClient.post<PostLogoutResponse>(API_ENDPOINTS.LOGOUT, data);
-//   return response.data;
-// };
+const genreList = async (): Promise<GenreListsResponse> => {
+  const response = await axiosClient.get<GenreListsResponse>(API_ENDPOINTS.GENRE_LIST, {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_API_KEY,
+      language: 'en-US',
+      page: 1,
+    },
+  });
+  return response.data;
+};
 
-// export const useLogoutMutation: () => UseMutationResult<
-//   PostLogoutResponse,
-//   Error,
-//   Partial<Logout>,
-//   unknown
-// > = () =>
-//   useMutation({
-//     mutationFn: logout,
-//     mutationKey: [QUERY_KEYS.LOGOUT],
-//   });
+export const useGenreListQuery = (): UseQueryResult<GenreListsResponse, Error> =>
+  useQuery({
+    queryFn: genreList,
+    queryKey: [QUERY_KEYS.GENRE_LIST],
+  });

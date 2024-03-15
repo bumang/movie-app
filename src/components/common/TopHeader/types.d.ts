@@ -1,13 +1,8 @@
-import { ApiResponse } from '@/services/types/api';
-
-export interface Logout extends Record<string, unknown> {}
-
-export interface LogoutResponse extends Record<string, unknown> {
-  message: string;
+export interface GenreLists {
+  id: number;
+  name: string;
 }
 
-export type PostLogoutResponse = ApiResponse<Partial<LogoutResponse>>;
-
-export type GetLogoutResponse = ApiResponse<Logout[]>;
-
-export type GetLogout = ApiResponse<Logout>;
+export interface GenreListsResponse {
+  genres: GenreLists[];
+}

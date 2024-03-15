@@ -1,9 +1,9 @@
 import { FeatureMovieDetail } from '@/features/feature-detail';
 import { MovieDetailPageLayout } from '@/layouts';
 
-const Home = () => <FeatureMovieDetail />;
+const MovieDetail = () => <FeatureMovieDetail />;
 
-Home.getLayout = (page: React.ReactElement) => (
+MovieDetail.getLayout = (page: React.ReactElement) => (
   <MovieDetailPageLayout>{page}</MovieDetailPageLayout>
 );
-export default Home;
+export default MovieDetail;
