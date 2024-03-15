@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import { ResultsDataType } from '../../types/movies';
 
@@ -8,6 +9,7 @@ interface RowProps {
 }
 
 const Row = ({ title, data }: RowProps) => {
+  const router = useRouter();
   return (
     <>
       <div className="text-[40px]">{title}</div>
@@ -19,7 +21,7 @@ const Row = ({ title, data }: RowProps) => {
               key={d?.id}
             >
               <Image
-                // loader={CustomImageLoader}
+                onClick={() => router.push(`/${d?.id}`)}
                 alt="movie-poster"
                 className="min-h-full min-w-full object-contain"
                 src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${d?.poster_path}`}

@@ -8,6 +8,7 @@ export const FeatureHome = () => {
   const { data: topRatedMoviesData } = useTopRatedMoviesQuery();
   const { data: upcomingMoviesData } = useUpcomingMoviesQuery();
   const { data: nowPlayingMoviesData } = useNowPlayingMovies();
+
   return (
     <div className="flex min-h-full min-w-full flex-col  font-trial text-background-default">
       {/* Banner section */}
