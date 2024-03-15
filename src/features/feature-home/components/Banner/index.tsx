@@ -13,7 +13,7 @@ interface BannerProps {
 const Banner = ({ data }: BannerProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const imageRefs = useRef([]);
-  const textRef = useRef(null);
+  const textRef = useRef([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -80,13 +80,14 @@ const Banner = ({ data }: BannerProps) => {
                 src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${item?.backdrop_path}`}
                 layout="fill"
                 objectFit="cover"
+                priority
               />
             </div>
           ))}
       </div>
       <div
         className="absolute bottom-[10%] left-0  z-20 px-16 transition-opacity duration-500 ease-in-out"
-        ref={textRef}
+        ref={textRef.current[currentIndex]}
       >
         <div className="[text-shadow:0px 1px 24px -1px rgba(255, 255, 255, 0.25)] text-[88px]">
           {(data && data[currentIndex]?.title) ||

@@ -36,8 +36,7 @@ html,
 body {
   @apply no-scrollbar;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
-    rgb(var(--background-start-rgb));
+  background: #000;
 }
 
 /* For IE, Edge, and Firefox */
