@@ -5,4 +5,5 @@ export const API_ENDPOINTS = {
   NOW_PLAYING: '/3/movie/now_playing',
   MOVIE_DETAIL: '/3/movie/',
   GENRE_LIST: '/3/genre/movie/list',
+  SEARCH_LIST: '/3/search/movie',
 };

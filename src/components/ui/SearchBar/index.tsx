@@ -19,9 +19,16 @@ interface ISearchField
   extends InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof searchFIeldVariants> {
   name: string;
+  onClear?: () => void;
 }
 
-export const SearchBar = ({ name, className, variant = 'gray', ...props }: ISearchField) => {
+export const SearchBar = ({
+  name,
+  className,
+  onClear,
+  variant = 'gray',
+  ...props
+}: ISearchField) => {
   const [value, setValue] = useState(props.defaultValue || '');
   const [hover, setHover] = useState(false);
   const [focus, setFocus] = useState(false);
@@ -72,7 +79,10 @@ export const SearchBar = ({ name, className, variant = 'gray', ...props }: ISear
       {value && (
         <Close
           className="absolute right-4 top-[33%] cursor-pointer   hover:bg-transparent"
-          onClick={() => setValue('')}
+          onClick={() => {
+            setValue('');
+            onClear && onClear();
+          }}
         />
       )}
     </label>

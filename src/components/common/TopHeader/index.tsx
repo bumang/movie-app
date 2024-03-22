@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { Avatar, DropDown, MenuList, SearchBar, Select } from '@/components/ui';
+import Button from '@/components/ui/Button';
 
 import { useGenreListQuery } from './api';
 
@@ -71,7 +72,46 @@ export const TopHeader = ({ page }: TopHeaderProps) => {
             }}
           />
         )}
-        {page === 'detail' && <SearchBar name="search-bar" variant="gray" />}
+        {page === 'home' && (
+          <Button
+            variant="outline-black"
+            size={40}
+            onClick={() => {
+              router.push({
+                pathname: '/movies',
+              });
+            }}
+            className="mt-1"
+          >
+            All Movies
+          </Button>
+        )}
+        {page === 'list' && (
+          <SearchBar
+            defaultValue={router.isReady ? router.query.query : ''}
+            onChange={(e) => {
+              if (e.target.value === '') {
+                router.push({
+                  query: {},
+                });
+              }
+              if (e.target.value && e.target.value !== '') {
+                router.push({
+                  query: {
+                    query: e?.target?.value,
+                  },
+                });
+              }
+            }}
+            name="search-bar"
+            variant="gray"
+            onClear={() => {
+              router.push({
+                query: {},
+              });
+            }}
+          />
+        )}
         <DropDown list={menuList}>
           <Avatar size="lg" className="cursor-pointer" />
         </DropDown>

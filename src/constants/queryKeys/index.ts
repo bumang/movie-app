@@ -5,5 +5,6 @@ export const QUERY_KEYS = {
   MOVIE_DETAIL: 'movie-detail',
   CAST_DETAIL: 'movie-cast-detail',
   GENRE_LIST: 'movie-genre-list',
+  SEARCH_LIST: 'movie-search-list',
   All_MOVIES: 'all-movies',
 };

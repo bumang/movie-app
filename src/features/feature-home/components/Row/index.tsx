@@ -26,7 +26,7 @@ const Row = ({ title, data }: RowProps) => {
               key={d?.id}
             >
               <Image
-                onClick={() => router.push(`/${d?.id}`)}
+                onClick={() => router.push(`/movies/${d?.id}`)}
                 alt="movie-poster"
                 src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${d?.poster_path}`}
                 height={100}
