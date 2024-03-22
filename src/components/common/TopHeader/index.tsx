@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -14,6 +15,14 @@ interface TopHeaderProps {
 export const TopHeader = ({ page }: TopHeaderProps) => {
   const { data } = useGenreListQuery();
   const router = useRouter();
+
+  const defaultOption = useMemo(() => {
+    if (router.isReady && router.query.with_genres) {
+      const genreId = router.query.with_genres;
+      return data?.genres?.find((genre) => genre.id === parseInt(genreId as string, 10));
+    }
+    return null;
+  }, [router.isReady, router.query.with_genres, data?.genres]);
 
   const menuList: MenuList[] = [
     { listItems: { email: 'name@flowbite.com', name: 'Bonnie Green' }, key: 1, position: 'header' },
@@ -49,6 +58,9 @@ export const TopHeader = ({ page }: TopHeaderProps) => {
             className="pt-[5px]"
             placeholder="Genre"
             testId=""
+            defaultValue={
+              defaultOption ? { label: defaultOption.name, value: defaultOption.id } : null
+            }
             options={
               data &&
               data?.genres?.map((d) => ({
@@ -98,7 +110,7 @@ export const TopHeader = ({ page }: TopHeaderProps) => {
               if (e.target.value && e.target.value !== '') {
                 router.push({
                   query: {
-                    query: e?.target?.value,
+                    query: e.target.value,
                   },
                 });
               }

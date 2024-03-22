@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -6,6 +6,7 @@ import { Loader, Select } from '@/components';
 import { SelectOption } from '@/components/ui/Select/select.types';
 import { ResultsDataType } from '@/features/feature-home/types/movies';
 import { cn } from '@/utils/cn';
+import { UseDebounce } from '@/utils/useDebounce';
 
 import { useAllMoviesQuery } from '../api/movieList';
 import { useSearchListQuery } from '../api/searchMovieList';
@@ -13,11 +14,17 @@ import { useSearchListQuery } from '../api/searchMovieList';
 const sortFilterOptions: SelectOption[] = [
   { label: 'Release Date', value: 'primary_release_date.asc' },
   { label: 'Rating', value: 'vote_average.asc' },
-  // { label: 'Time Duration', value: 'time_duration.asc' },
 ];
 
 const MovieListHeader = () => {
   const router = useRouter();
+
+  const defaultOption = useMemo(() => {
+    if (router.isReady && router.query.sort_by) {
+      return sortFilterOptions.find((option) => option.value === router.query.sort_by);
+    }
+    return null;
+  }, [router.isReady, router.query.sort_by]);
 
   return (
     <div className="flex min-w-full justify-between border-b-3 border-b-gray-800">
@@ -28,6 +35,7 @@ const MovieListHeader = () => {
           <Select
             testId=""
             isClearable
+            defaultValue={defaultOption}
             options={sortFilterOptions}
             onChange={(newValue) => {
               if (newValue === null) {
@@ -67,7 +75,7 @@ export const FeatureMovieList = () => {
     isLoading: searchMoviesIsLoading,
     isFetching: searchMoviesIsFetching,
   } = useSearchListQuery({
-    query: router?.query?.query as string,
+    query: UseDebounce({ value: router?.query?.query, delay: 500 }),
   });
 
   const [isLoading, setLoading] = useState(true);
